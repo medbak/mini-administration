@@ -1,0 +1,74 @@
+version: '3.5'
+services:
+  # The Application
+
+  app:
+    build:
+      args:
+        user: ${USER}
+        uid: ${UID}
+      context: ./docker/app
+      dockerfile: app.dockerfile
+    working_dir: /var/www/html
+    image: administration:1.0
+    container_name: administration
+    networks:
+      administration_network:
+        ipv4_address: 172.20.1.1
+    restart: always
+    ports:
+      - 2548:80
+    volumes:
+    - ./:/var/www/html
+    environment:
+    - "DB_PORT=3306"
+    - "DB_HOST=database"
+    - APACHE_RUN_USER=#${UID}
+    - APACHE_RUN_GROUP=#${UID}
+
+  # The Database
+  database:
+    image: mysql:5.7
+    environment:
+    - "MYSQL_DATABASE=administration"
+    - "MYSQL_ROOT_PASSWORD=wg2bAQhd36aJ"
+    container_name: administration_db
+    restart: always
+    networks:
+      administration_network:
+        ipv4_address: 172.20.1.2
+    ports:
+    - "33093:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+    - database
+    links:
+    - database
+    ports:
+    - 4259:80
+    container_name : phpmyadmin_administration
+    restart: always
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: wg2bAQhd36aJ
+    networks:
+      administration_network:
+        ipv4_address: 172.20.1.3
+
+volumes:
+  dbdata:
+
+networks:
+  administration_network:
+    name: administration-network
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.20.0.0/16
+
+
+  
+
