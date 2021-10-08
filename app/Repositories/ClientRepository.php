@@ -10,7 +10,9 @@ class ClientRepository implements ClientInterface
 
     public function getClientsDetails()
     {
-        $data = Client::withCount('commandes')->get();
+        $data = Client::select('prenom', 'nom', 'email', 'telephone')
+         ->withCount('commandes')
+         ->get();
 
         return $data;
     }
