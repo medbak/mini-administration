@@ -19,9 +19,9 @@ class ClientController extends Controller
     {
         $result = $this->client->getClientsDetails();
 
+        return response()->json($result);
         $data['clients'] = $result;
 
         return view('client.getDetails', $data);
-
     }
 }

@@ -3,16 +3,17 @@
 namespace Database\Factories;
 
 use App\Models\Client;
+use App\Models\Commande;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ClientFactory extends Factory
+class CommandeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Client::class;
+    protected $model = Commande::class;
 
     /**
      * Define the model's default state.
@@ -22,10 +23,10 @@ class ClientFactory extends Factory
     public function definition()
     {
         return [
-            'nom' => $this->faker->lastName(),
-            'prenom' => $this->faker->firstName(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'telephone' => $this->faker->phoneNumber(),
+            'date_commande' => $this->faker->date,
+            'numero' => $this->faker->unique()->numerify('#####'),
+            'article' => $this->faker->text,
+            'montant' => $this->faker->randomFloat(2, 1, 1000),
         ];
     }
 }

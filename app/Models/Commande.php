@@ -7,25 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Client extends Model
+class Commande extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'client';
+    protected $table = 'commande';
 
     protected $id;
-    protected $nom;
-    protected $prenom;
-    protected $email;
-    protected $telephone;
-
+    protected $client_id;
+    protected $date_commande;
+    protected $numero;
+    protected $article;
+    protected $montant;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['nom', 'prenom', 'email', 'telephone'];
+    protected $fillable = ['client_id', 'date_commande', 'numero', 'article', 'montant'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -34,11 +34,15 @@ class Client extends Model
      */
     protected $hidden = ['created_at', 'updated_at'];
 
-    /**
-     * Une personne peut avoir 0 ou plusieurs commandes
+    protected $casts = [
+        'date_commande' => 'datetime:d-m-Y',
+    ];
+
+    /*
+     * Une commande appartient à un et un seul client
      */
-    public function commandes()
+    public function client()
     {
-        return $this->hasMany('App\Models\Commande', 'client_id','id');
+        return $this->belongsTo('App\Models\Client');
     }
 }

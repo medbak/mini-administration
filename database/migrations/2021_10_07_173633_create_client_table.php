@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableClient extends Migration
+class CreateClientTable extends Migration
 {
     /**
      * Run the migrations.

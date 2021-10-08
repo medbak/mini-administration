@@ -3,33 +3,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\WeatherInterface;
+use App\Interfaces\CommandeInterface;
 use Illuminate\Http\Request;
 
-class WeatherController extends Controller
+class CommandeController extends Controller
 {
-    private $weather;
+    private $commande;
 
-    public function __construct(WeatherInterface $weather)
+    public function __construct(CommandeInterface $commande)
     {
-        $this->weather = $weather;
+        $this->commande = $commande;
     }
 
-    public function getDataByname(Request $request)
+    public function getCommandeDetails()
     {
-        $name = $request->query('name');
-        $result = $this->weather->getDataByName($name);
+        $result = $this->commande->getCommandeDetails();
 
         return response()->json($result);
-    }
+        $data['clients'] = $result;
 
-    public function showData($name)
-    {
-        $result = $this->weather->getDataByName($name);
-
-        $data['list'] = $result;
-
-        return view('weather.showData', $data);
-
+        return view('client.getDetails', $data);
     }
 }

@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('getClientsDetails', 'ClientController@getClientsDetails');
+Route::get('getClientsDetails', 'App\Http\Controllers\ClientController@getClientsDetails');
+
+Route::get('getCommandeDetails', 'App\Http\Controllers\CommandeController@getCommandeDetails');
