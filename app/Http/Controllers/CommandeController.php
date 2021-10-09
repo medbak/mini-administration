@@ -19,9 +19,9 @@ class CommandeController extends Controller
     {
         $result = $this->commande->getCommandeDetails();
 
-        return response()->json($result);
-        $data['clients'] = $result;
+        //return response()->json($result);
+        $data['commandes'] = $result;
 
-        return view('client.getDetails', $data);
+        return view('commande.listing', $data);
     }
 }

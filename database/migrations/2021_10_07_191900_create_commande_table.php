@@ -19,7 +19,7 @@ class CreateCommandeTable extends Migration
             $table->integer('client_id')->unsigned();
             $table->date('date_commande');
             $table->integer('numero')->unsigned();
-            $table->text('article');
+            $table->text('articles');
             $table->decimal('montant', 8, 2);
 
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

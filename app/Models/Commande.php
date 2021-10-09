@@ -17,7 +17,7 @@ class Commande extends Model
     protected $client_id;
     protected $date_commande;
     protected $numero;
-    protected $article;
+    protected $articles;
     protected $montant;
 
     /**
@@ -25,7 +25,7 @@ class Commande extends Model
      *
      * @var array
      */
-    protected $fillable = ['client_id', 'date_commande', 'numero', 'article', 'montant'];
+    protected $fillable = ['client_id', 'date_commande', 'numero', 'articles', 'montant'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -35,7 +35,7 @@ class Commande extends Model
     protected $hidden = ['created_at', 'updated_at'];
 
     protected $casts = [
-        'date_commande' => 'datetime:d-m-Y',
+        'date_commande' => 'datetime:d/m/Y',
     ];
 
     /*

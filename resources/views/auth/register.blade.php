@@ -54,6 +54,11 @@
                 <x-jet-button class="ml-4">
                     {{ __('Register') }}
                 </x-jet-button>
+
+                <x-jet-button class="ml-4">
+                    <a href="{{ route('login') }}">Login</a>
+                </x-jet-button>
+
             </div>
         </form>
     </x-jet-authentication-card>

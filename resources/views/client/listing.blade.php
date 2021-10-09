@@ -14,7 +14,6 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-
                 <div class="btn-group pull-right m--margin-left-5" role="group" aria-label="Default button group">
                     <a href="{{ url('exportToExcel')}}"
                        class="btn btn-primary m-btn--icon " target="_blank">
@@ -27,7 +26,12 @@
         </div>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <x-jet-button class="ml-4">
+                    <a href="{{ route('exportToExcel') }}">Exporter Toutes Les informations</a>
+                </x-jet-button>
+
                 <table class="table table-striped- table-bordered table-hover table-checkable">
                     <thead>
                     <tr>

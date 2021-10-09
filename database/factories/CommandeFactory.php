@@ -25,7 +25,7 @@ class CommandeFactory extends Factory
         return [
             'date_commande' => $this->faker->date,
             'numero' => $this->faker->unique()->numerify('#####'),
-            'article' => $this->faker->text,
+            'articles' => $this->faker->text,
             'montant' => $this->faker->randomFloat(2, 1, 1000),
         ];
     }

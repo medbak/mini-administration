@@ -30,3 +30,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/getClientsDetails', 'App\
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/exportToExcel', 'App\Http\Controllers\ClientController@exportToExcel')
     ->name('exportToExcel');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/getCommandesDetails', 'App\Http\Controllers\CommandeController@getCommandeDetails')
+    ->name('getCommandesDetails');
