@@ -22,8 +22,8 @@ class CommandeRepository implements CommandeInterface
                 commande.articles
                 '
             )
+            ->orderBy('numero', 'desc')
             ->get();
-
         return $data;
     }
 }

@@ -15,7 +15,7 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <table class="table table-striped- table-bordered table-hover table-checkable">
+                <table id="commandes" class="table table-bordered">
                     <thead>
                     <tr>
                         <th>Client</th>
@@ -29,19 +29,24 @@
                     @if(isset($commandes) && $commandes != null)
                         @foreach($commandes as $commande)
                             <tr>
-                                <td>{{$commande->nom_complet}}</td>
-                                <td>{{$commande->date_commande}}</td>
-                                <td>{{$commande->numero}}</td>
-                                <td>{{$commande->articles}}</td>
-                                <td>{{$commande->montant}}</td>
+                                <td class="table-secondary">{{$commande->nom_complet}}</td>
+                                <td class="table-secondary">{{ date_format($commande->date_commande, 'd/m/Y')}}</td>
+                                <td class="table-secondary">{{$commande->numero}}</td>
+                                <td class="table-secondary">@php echo $commande->articles @endphp</td>
+                                <td class="table-secondary">{{$commande->montant}}</td>
                             </tr>
                         @endforeach
                     @endif
                     </tbody>
-
                 </table>
             </div>
         </div>
-
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#commandes').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
 </x-app-layout>

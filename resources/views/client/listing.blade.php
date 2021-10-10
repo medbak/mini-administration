@@ -12,27 +12,24 @@
     </x-slot>
 
     <div class="py-12">
+
+
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="btn-group pull-right m--margin-left-5" role="group" aria-label="Default button group">
-                    <a href="{{ url('exportToExcel')}}"
-                       class="btn btn-primary m-btn--icon " target="_blank">
-                        <span><i class="fa fa-file-pdf fa-2x"></i>
-                            <span>Exporter Toutes Les informations</span>
-                        </span>
-                    </a>
+
+                <div class="row">
                 </div>
-            </div>
-        </div>
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="row">
+                    <div class="col-md-12 bg-light text-right" style="margin-bottom:5px;">
+                        <x-jet-button class="ml-4">
+                            <a href="{{ route('exportToExcel') }}">Exporter Toutes Les informations</a>
+                        </x-jet-button>
+                    </div>
+                </div>
 
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-button class="ml-4">
-                    <a href="{{ route('exportToExcel') }}">Exporter Toutes Les informations</a>
-                </x-jet-button>
-
-                <table class="table table-striped- table-bordered table-hover table-checkable">
+                <table id="clients" class="table  table-bordered">
                     <thead>
                     <tr>
                         <th>Prénom</th>
@@ -46,11 +43,11 @@
                     @if(isset($clients) && $clients != null)
                         @foreach($clients as $client)
                             <tr>
-                                <td>{{$client->prenom}}</td>
-                                <td>{{$client->nom}}</td>
-                                <td>{{$client->email}}</td>
-                                <td>{{$client->telephone}}</td>
-                                <td>{{$client->commandes_count}}</td>
+                                <td class="table-secondary">{{$client->prenom}}</td>
+                                <td class="table-secondary">{{$client->nom}}</td>
+                                <td class="table-secondary">{{$client->email}}</td>
+                                <td class="table-secondary">{{$client->telephone}}</td>
+                                <td class="table-secondary">{{$client->commandes_count}}</td>
                             </tr>
                         @endforeach
                     @endif
@@ -61,4 +58,11 @@
         </div>
 
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#clients').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
 </x-app-layout>

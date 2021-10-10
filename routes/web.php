@@ -13,13 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('getClientsDetails', 'App\Http\Controllers\ClientController@getClientsDetails');
-
-Route::get('getCommandeDetails', 'App\Http\Controllers\CommandeController@getCommandeDetails');
+Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
