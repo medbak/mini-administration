@@ -33,7 +33,7 @@
                                 <td class="table-secondary">{{ date_format($commande->date_commande, 'd/m/Y')}}</td>
                                 <td class="table-secondary">{{$commande->numero}}</td>
                                 <td class="table-secondary">@php echo $commande->articles @endphp</td>
-                                <td class="table-secondary">{{$commande->montant}}</td>
+                                <td class="table-secondary">{{$commande->montant}} &euro;</td>
                             </tr>
                         @endforeach
                     @endif

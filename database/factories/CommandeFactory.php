@@ -42,7 +42,7 @@ class CommandeFactory extends Factory
 
     function generateText()
     {
-        return random_int(1,9).' x Produit '.random_int(1,9).' (Ref : '.$this->generateRandomString(5).')' ;
+        return random_int(1,9).' x Produit '.random_int(1,9).' (Ref: '.$this->generateRandomString(5).')' ;
     }
 
     function generateArticle()
