@@ -25,7 +25,7 @@ class CommandeFactory extends Factory
         return [
             'date_commande' => $this->faker->date,
             'numero' => $this->faker->unique()->numerify('#####'),
-            'articles' => $this->faker->bothify(random_int(1,9).' x Produit # (Ref : '.$this->generateRandomString(5).')'), // 1efr38qa
+            'articles' => $this->faker->bothify($this->generateArticle()),
             'montant' => $this->faker->randomFloat(2, 1, 1000),
         ];
     }
@@ -38,6 +38,24 @@ class CommandeFactory extends Factory
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    function generateText()
+    {
+        return random_int(1,9).' x Produit '.random_int(1,9).' (Ref : '.$this->generateRandomString(5).')' ;
+    }
+
+    function generateArticle()
+    {
+        $r = random_int(1,9);
+        $articles = '';
+
+        for ($i =0; $i < $r; $i++)
+        {
+            $articles .= $this->generateText().'<br>';
+        }
+
+        return $articles;
     }
 
 }
