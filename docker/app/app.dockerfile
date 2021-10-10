@@ -2,6 +2,7 @@ FROM php:7.3.19-apache
 
 # Arguments defined in docker-compose.yml
 ARG user
+ARG uid=1000
 
 RUN apt-get update && apt-get install -y \
         libpng-dev \
@@ -30,7 +31,7 @@ RUN a2enmod rewrite headers expires
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Create system user to run Composer and Artisan Commands
-ARG uid
+
 RUN useradd -G www-data,root -u $uid -d /home/$user $user
 
 RUN mkdir -p /home/$user/.composer && \
