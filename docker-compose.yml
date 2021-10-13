@@ -6,6 +6,7 @@ services:
     build:
       args:
         user: ${USER}
+        uid: 1000
       context: ./docker/app
       dockerfile: app.dockerfile
     working_dir: /var/www/html
