@@ -23,8 +23,8 @@ services:
     environment:
     - "DB_PORT=3306"
     - "DB_HOST=database"
-    - APACHE_RUN_USER=#${UID}
-    - APACHE_RUN_GROUP=#${UID}
+    - APACHE_RUN_USER=#1000
+    - APACHE_RUN_GROUP=#1000
 
   # The Database
   database:
