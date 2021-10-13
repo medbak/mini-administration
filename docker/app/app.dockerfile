@@ -2,7 +2,7 @@ FROM php:7.3.19-apache
 
 # Arguments defined in docker-compose.yml
 ARG user
-ARG uid=1000
+ARG uid
 
 RUN apt-get update && apt-get install -y \
         libpng-dev \
